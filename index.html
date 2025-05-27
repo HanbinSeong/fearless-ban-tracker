@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LoL 피어리스 트래커</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <aside id="sidebar" class="sidebar collapsed">
+      <button id="toggleBtn" class="toggle-btn">☰</button>
+      <div id="softLists" class="soft-lists hidden">
+        <div class="team-list">
+          <div class="team-label blue">1팀</div>
+          <div id="team1List" class="used-list"></div>
+        </div>
+        <div class="team-list">
+          <div class="team-label red">2팀</div>
+          <div id="team2List" class="used-list"></div>
+        </div>
+      </div>
+      <div id="hardList" class="used-list hidden"></div>
+      <div class="sidebar-footer">
+        <button id="copyBtn" class="action-btn">복사</button>
+        <button id="resetBtn" class="action-btn">리셋</button>
+      </div>
+    </aside>
+    <main class="main-content">
+      <div class="controls">
+        <div class="mode-switch">
+          <label class="switch mode">
+            <input type="checkbox" id="modeToggle">
+            <span class="mode-slider"></span>
+          </label>
+        </div>
+        <div class="search-box centered">
+          <div class="search-wrapper">
+            <input id="searchInput" type="text" placeholder="챔피언 검색">
+            <button id="clearBtn" class="clear-btn">×</button>
+          </div>
+        </div>
+        <div class="toggle-switch">
+          <label class="switch">
+            <input type="checkbox" id="viewToggle">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+      <div id="championGrid" class="champion-grid"></div>
+    </main>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

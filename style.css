@@ -1,0 +1,51 @@
+body, html { margin:0; padding:0; font-family:sans-serif; }
+:root { --card-size: 100px; }
+.container { display:grid; grid-template-columns:auto 1fr; height:100vh; }
+.sidebar { background:#1e2024; color:#fff; width:200px; display:flex; flex-direction:column; transition:width .3s; overflow:hidden; }
+.sidebar.collapsed { width:40px; }
+.sidebar.collapsed .soft-lists,
+.sidebar.collapsed #hardList,
+.sidebar.collapsed .sidebar-footer { display:none; }
+.toggle-btn { background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer; padding:8px; }
+.soft-lists, #hardList { flex:1; }
+.soft-lists.hidden, #hardList.hidden { display:none; }
+.soft-lists { display:flex; flex-direction:column; }
+.team-list { flex:1; }
+.team-label { text-align:center; padding:4px 0; font-size:.8rem; }
+.team-label.blue { background:#2196F3; }
+.team-label.red { background:red; }
+.used-list { display:grid; grid-template-columns:repeat(5,1fr); column-gap:4px; row-gap:4px; padding:4px; align-content:start; }
+.used-card { position:relative; }
+.used-card img { width:100%; border-radius:4px; display:block; }
+.used-card .remove-btn { position:absolute; top:2px; right:2px; background:red; color:#fff; border:none; border-radius:50%; width:16px; height:16px; font-size:12px; cursor:pointer; }
+.sidebar-footer { padding:8px; text-align:center; }
+.action-btn { margin:0 4px; padding:4px 8px; cursor:pointer; border-radius:8px; }
+.main-content { padding:16px; background:#f0f0f0; overflow-y:auto; }
+.controls { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.mode-switch { }
+.switch.mode { position:relative; display:inline-block; width:80px; height:34px; }
+.switch.mode input { opacity:0; width:0; height:0; }
+.mode-slider { position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; transition:.4s; border-radius:34px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:.9rem; }
+.mode-slider { background:#2196F3; content:"소프트"; }
+.switch.mode input:checked + .mode-slider { background:#555; }
+.switch.mode .mode-slider:before { content:"소프트"; }
+.switch.mode input:checked + .mode-slider:before { content:"하드"; }
+.search-box.centered { flex:1; display:flex; justify-content:center; }
+.search-wrapper { position: relative; }
+.search-wrapper input { width: 100%; max-width: 200px; padding: 8px; padding-right: 30px; font-size: 1rem; border: 1px solid #fff; border-radius: 12px; color: #000000; }
+.search-wrapper .clear-btn { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #000000; font-size: 1rem; cursor: pointer; padding: 0; line-height: 1; }
+.toggle-switch { margin-left:auto; }
+.switch { position:relative; display:inline-block; width:100px; height:34px; }
+.switch input { opacity:0; width:0; height:0; }
+.slider { position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background:#ccc; transition:.4s; border-radius:34px; }
+.slider:before { position:absolute; content:"전체"; height:26px; line-height:26px; width:100%; text-align:center; color:#fff; font-size:.9rem; transition:.4s; }
+input:checked + .slider { background:#2196F3; }
+input:checked + .slider:before { content:"사용가능"; }
+.champion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(var(--card-size), 1fr)); gap: clamp(4px, 2vw, 12px); justify-items: center; }
+.card { position:relative; text-align:center; cursor:pointer; }
+.card.disabled img, .card.soft1 img, .card.soft2 img { opacity:.4; }
+.card img { width: var(--card-size);  height: auto; }
+.card figcaption { margin-top:4px; font-size:.9rem; }
+.card .badge { position:absolute; top:4px; left:4px; width:20px; height:20px; border-radius:50%; font-size:12px; line-height:20px; text-align:center; color:#fff; }
+.card.soft1 .badge { background:#2196F3; }
+.card.soft2 .badge { background:red; }
