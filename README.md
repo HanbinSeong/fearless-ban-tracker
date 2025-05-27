@@ -54,4 +54,4 @@
    - 리포지토리 Settings → Pages → Branch `main`/`master` 선택  
    - `/ (root)` 경로로 배포  
 
-   > 배포된 URL: `https://<GitHub사용자명>.github.io/<리포지토리명>/`
+   > 배포된 URL: `https://hanbinseong.github.io/fearless-ban-tracker/`
