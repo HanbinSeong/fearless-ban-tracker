@@ -1,0 +1,3 @@
+.sidebar { background: var(--sidebar-bg); color: #fff; width:200px; /* ... */ }
+.sidebar.collapsed { width:40px; }
+/* ... 기타 사이드바 스타일 */

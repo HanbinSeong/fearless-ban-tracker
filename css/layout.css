@@ -1,0 +1,9 @@
+body, html { margin:0; padding:0; font-family:sans-serif; }
+.container { display:grid; grid-template-columns:auto 1fr; height:100vh; }
+.main-content { padding:16px; background:#f0f0f0; overflow-y:auto; }
+.champion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-size), 1fr));
+  gap: clamp(4px, 2vw, 12px);
+  justify-items: center;
+}

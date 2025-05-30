@@ -1,0 +1,4 @@
+.card { position:relative; text-align:center; cursor:pointer; }
+.card img { width: var(--card-size); height: auto; }
+.card.disabled img { opacity: .4; }
+/* 배지, 캡션 등 */
