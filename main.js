@@ -17,7 +17,12 @@
 
   const els={grid:document.querySelector('#championGrid'),team1:document.querySelector('#team1List'),team2:document.querySelector('#team2List'),hard:document.querySelector('#hardList'),input:document.querySelector('#searchInput')};
 
-  function resetAll(){ usedSet.clear(); softOrder.clear(); localStorage.removeItem('softOrder'); }
+  function resetAll(){
+    usedSet.clear();
+    softOrder.clear();
+    localStorage.removeItem('usedChamps');
+    localStorage.removeItem('softOrder');
+  }
   function toggleMode(){ softMode=!modeToggle.checked; resetAll(); renderAll(); }
 
   modeToggle.addEventListener('change',toggleMode);
@@ -77,7 +82,14 @@
     }
   }
 
-  function renderAll(){renderGrid();renderSidebar();localStorage.setItem('usedChamps',JSON.stringify([...usedSet]));localStorage.setItem('softOrder',JSON.stringify([...softOrder]));}
+  function renderAll(){
+    renderGrid();
+    renderSidebar();
+    if(usedSet.size) localStorage.setItem('usedChamps', JSON.stringify([...usedSet]));
+    else localStorage.removeItem('usedChamps');
+    if(softOrder.size) localStorage.setItem('softOrder', JSON.stringify([...softOrder]));
+    else localStorage.removeItem('softOrder');
+  }
   function onCardClick(id) {
     if (softMode) {
       const state = softOrder.get(id) || 0;
