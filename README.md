@@ -49,9 +49,16 @@
    python3 -m http.server 8000
    # → http://localhost:8000 접속
    ```
-2. **GitHub Pages 배포**  
-   - 이 저장소를 GitHub에 Push  
-   - 리포지토리 Settings → Pages → Branch `main`/`master` 선택  
-   - `/ (root)` 경로로 배포  
+2. **GitHub Pages 배포**
+   - 이 저장소를 GitHub에 Push
+   - 리포지토리 Settings → Pages → Branch `main`/`master` 선택
+   - `/ (root)` 경로로 배포
 
    > 배포된 URL: [https://hanbinseong.github.io/fearless-ban-tracker/](https://hanbinseong.github.io/fearless-ban-tracker/)
+
+## 🧪 테스트
+
+```bash
+npm install
+npm test
+```
