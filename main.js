@@ -1,7 +1,6 @@
+import { getInitials, debounce } from './utils.js';
+
 (async function(){
-  const initialConsonants=["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"];
-  const getInitials=str=>str.split('').map(ch=>{const code=ch.charCodeAt(0)-0xAC00;return(0<=code&&code<=11171)?initialConsonants[Math.floor(code/588)]:'?';}).join('');
-  const debounce=(fn,ms)=>(...args)=>{clearTimeout(fn._t);fn._t=setTimeout(()=>fn(...args),ms);};
 
   let version=''; try{version=(await fetch('https://ddragon.leagueoflegends.com/api/versions.json').then(r=>r.json()))[0];}catch{}
   const data=(await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion.json`).then(r=>r.json())).data;
@@ -76,7 +75,21 @@
 
   function renderSidebar(){
     if(softMode){
-      document.querySelector('#softLists').classList.remove('hidden'); els.hard.classList.add('hidden'); els.team1.innerHTML=''; els.team2.innerHTML=''; softOrder.forEach((v,id)=>{const card=document.createElement('div');card.className='used-card';card.innerHTML=`<img src="${iconBase}${id}.png"><button class="remove-btn">×</button>`;card.querySelector('.remove-btn').addEventListener('click',()=>{softOrder.delete(id);renderAll();});(v===1?els.team1:els.team2).append(card);});
+      document.querySelector('#softLists').classList.remove('hidden');
+      els.hard.classList.add('hidden');
+      els.team1.innerHTML='';
+      els.team2.innerHTML='';
+      softOrder.forEach((v,id)=>{
+        const card=document.createElement('div');
+        card.className='used-card';
+        card.innerHTML=`<img src="${iconBase}${id}.png"><button class="remove-btn">×</button>`;
+        card.querySelector('.remove-btn').addEventListener('click',()=>{
+          softOrder.delete(id);
+          usedSet.delete(id);
+          renderAll();
+        });
+        (v===1?els.team1:els.team2).append(card);
+      });
     } else {
       document.querySelector('#softLists').classList.add('hidden'); els.hard.classList.remove('hidden'); els.hard.innerHTML=''; usedSet.forEach(id=>{const card=document.createElement('div');card.className='used-card';card.innerHTML=`<img src="${iconBase}${id}.png"><button class="remove-btn">×</button>`;card.querySelector('.remove-btn').addEventListener('click',()=>{usedSet.delete(id);renderAll();});els.hard.append(card);});
     }
